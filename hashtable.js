@@ -7,6 +7,11 @@ function HashTable(){
       return `[ ${this.key} - ${this.value}]`
     }
   };
+  /* private method for HashTable */
+  // Given a key parameter, we will generate a number
+  //based on the sum of each char ASCII value that the composes key
+  // This method is used for creating hash value in our HashTable
+
   var loseloseHashCode = function(key){
     var hash = 0;
     for (var i = 0 ; i < key.length ; i++){
@@ -14,6 +19,7 @@ function HashTable(){
     }
     return hash % 37;
   }
+  // adds new item to the hash table (or update)
   this.put =  function(key,value){
     var position = loseloseHashCode(key);
     if (table[position] == undefined){
@@ -21,6 +27,7 @@ function HashTable(){
     }
     table[position].append(new ValuePair(key,value))
   }
+  // this removes the value from the hash table using the key
   this.remove = function(key){
     var position = loseloseHashCode(key);
     if (table[position] !== undefined){
@@ -39,6 +46,7 @@ function HashTable(){
     }
     return undefined;
   }
+  // returns a specific value searched by the key
   this.get =  function(key){
     var position = loseloseHashCode(key);
     if (table[position] !== undefined){
